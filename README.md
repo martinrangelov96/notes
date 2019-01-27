@@ -34,7 +34,8 @@ employees.stream()
                     result.append(String.format("Highest Average Salary: %s", d.getKey()))
                             .append(System.lineSeparator());
                     d.getValue().stream()
-                            .sorted(Comparator.comparing(Employee::getSalary, Comparator.reverseOrder()))
+                            //.sorted(Comparator.comparing(Employee::getSalary, Comparator.reverseOrder()))
+                            .sorted((e1, e2) -> Double.compare(e2.getSalary(), e1.getSalary()))
                             .forEach(employee -> result.append(employee).append(System.lineSeparator()));
                     System.out.println(result.toString());
                 });
