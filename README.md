@@ -36,7 +36,7 @@ employees.stream()
                     d.getValue().stream()
                             //.sorted(Comparator.comparing(Employee::getSalary, Comparator.reverseOrder()))
                             .sorted((e1, e2) -> Double.compare(e2.getSalary(), e1.getSalary()))
-                            .forEach(employee -> result.append(employee).append(System.lineSeparator()));
+                            .forEach(employee -> result.append(employee.toString()).append(System.lineSeparator()));
                     System.out.println(result.toString());
                 });
 
