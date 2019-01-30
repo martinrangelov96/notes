@@ -41,3 +41,7 @@ employees.stream()
                 });
 
 ---using StringBuilder (faster)
+
+if(str == null || str.trim().isEmpty()){throw new ...}
+
+---String that cannot be null, empty or whitespace
