@@ -45,3 +45,39 @@ employees.stream()
 if(str == null || str.trim().isEmpty()){throw new ...}
 
 ---String that cannot be null, empty or whitespace
+
+          SPRING MVC
+
+---ApplicationSecurityConfiguration example
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .csrf()
+                .csrfTokenRepository(csrfTokenRepository())
+                .and()
+                .authorizeRequests()
+                .antMatchers("/", "/users/login", "/users/register").anonymous()
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/users/login")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/home")
+                .and()
+                .logout();
+    }
+
+    private CsrfTokenRepository csrfTokenRepository() {
+        HttpSessionCsrfTokenRepository repository =
+                new HttpSessionCsrfTokenRepository();
+        repository.setSessionAttributeName("_csrf");
+        return repository;
+    }
+}
