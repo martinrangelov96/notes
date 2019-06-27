@@ -48,7 +48,8 @@ if(str == null || str.trim().isEmpty()){throw new ...}
 
           SPRING MVC
 
----ApplicationSecurityConfiguration example
+---ApplicationSecurityConfiguration example:
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
